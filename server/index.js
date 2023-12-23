@@ -7,7 +7,7 @@ const app = express()
 let port = process.env.PORT || 8080
 
 app.use(cors({
-    origin: ['https://code-challenge-client-seven.vercel.app/'],
+    origin: ['https://code-challenge-client-seven.vercel.app'],
     methods: ['POST', 'GET'],
     credentials: true
 }))
