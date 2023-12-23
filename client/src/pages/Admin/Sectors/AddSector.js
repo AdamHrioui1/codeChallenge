@@ -5,11 +5,12 @@ import Cookies from 'js-cookie'
 function AddSector() {    
     const [Error, setError] = useState('')
     const [Name, setName] = useState('')
+    axios.defaults.withCredentials = true
     
     const submitHandler = async e => {
         e.preventDefault()
         try {
-            await axios.post(`/sector`, {
+            await axios.post(`https://code-challenge-nine.vercel.app/api/sector`, {
                 name: Name,
             }, {
                 headers: {

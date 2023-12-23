@@ -8,6 +8,7 @@ export const ContextProvider = ({ children }) => {
 
     const [IsAdmin, setIsAdmin] = useState(false)
     const [Token, setToken] = useState('')
+    axios.defaults.withCredentials = true
 
     const getToken = () => {
         try {
@@ -20,7 +21,7 @@ export const ContextProvider = ({ children }) => {
 
     const getCustomer = async () => {
         try {
-            const res = await axios.get('/customer/info', {
+            const res = await axios.get('https://code-challenge-nine.vercel.app/api/customer/info', {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }

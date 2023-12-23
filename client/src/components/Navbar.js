@@ -15,13 +15,14 @@ function Navbar() {
     const [IsAdmin] = state.IsAdmin
     const [Token] = state.Token
     const [BurgerActive, setBurgerActive] = useState(false)
+    axios.defaults.withCredentials = true
 
     const burgerHandler = () => setBurgerActive(!BurgerActive)
 
     const logoutHandler = async e => {
         e.preventDefault()
         try {
-            const res = await axios.get('/customer/logout')
+            const res = await axios.get('https://code-challenge-nine.vercel.app/api/customer/logout')
             Cookies.remove('refreshtoken')
 
             if(res.data) {

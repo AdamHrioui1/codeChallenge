@@ -5,10 +5,11 @@ import remove from '../../../assets/delete.svg'
 
 function Customers() {
     const [Customer, setCustomer] = useState([])
+    axios.defaults.withCredentials = true
 
     const getCustomer = async () => {
         try {
-            const res = await axios.get('/customer/', {
+            const res = await axios.get('https://code-challenge-nine.vercel.app/api/customer/', {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }
@@ -22,7 +23,7 @@ function Customers() {
     const deleteCustomer = async (id) => {
         if(window.confirm('Are you sure you want to delete this customer?')) {
             try {
-                await axios.delete(`/customer/${id}`, {
+                await axios.delete(`https://code-challenge-nine.vercel.app/api/customer/${id}`, {
                     headers: {
                         'Authorization': Cookies.get('refreshtoken')
                     }

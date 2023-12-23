@@ -6,12 +6,13 @@ import { useParams } from 'react-router-dom'
 function UpdateSector() {
     const [Error, setError] = useState('')
     const [Name, setName] = useState('')
+    axios.defaults.withCredentials = true
 
     const params = useParams()
     
     const getSector = async () => {
         try {
-            const res = await axios.get(`/sector/${params.id}`, {
+            const res = await axios.get(`https://code-challenge-nine.vercel.app/api/sector/${params.id}`, {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }
@@ -27,7 +28,7 @@ function UpdateSector() {
     const submitHandler = async e => {
         e.preventDefault()
         try {
-            await axios.put(`/sector/${params.id}`, {
+            await axios.put(`https://code-challenge-nine.vercel.app/api/sector/${params.id}`, {
                 name: Name,
             }, {
                 headers: {

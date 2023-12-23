@@ -10,10 +10,11 @@ function UpdateUser() {
     const [AgreeToTerms, setAgreeToTerms] = useState(true)
     const [Sectors, setSectors] = useState([])
     const params = useParams()
+    axios.defaults.withCredentials = true
 
     const getSectors = async () => {
         try {
-            const res = await axios.get('/sector/', {
+            const res = await axios.get('https://code-challenge-nine.vercel.app/api/sector/', {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }
@@ -27,7 +28,7 @@ function UpdateUser() {
 
     const getUser = async () => {
         try {
-            const res = await axios.get(`/user/${params.id}`, {
+            const res = await axios.get(`https://code-challenge-nine.vercel.app/api/user/${params.id}`, {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }
@@ -46,7 +47,7 @@ function UpdateUser() {
     const submitHandler = async e => {
         e.preventDefault()
         try {
-            await axios.put(`/user/${params.id}`, {
+            await axios.put(`https://code-challenge-nine.vercel.app/api/user/${params.id}`, {
                 name: Name,
                 sector: Sector,
                 agreeToTerms: AgreeToTerms.toString()

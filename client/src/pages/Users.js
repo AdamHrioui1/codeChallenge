@@ -7,10 +7,11 @@ import remove from '../assets/delete.svg'
 
 function Users() {
     const [Users, setUsers] = useState([])
+    axios.defaults.withCredentials = true
 
     const getUsers = async () => {
         try {
-            const res = await axios.get('/user/', {
+            const res = await axios.get('https://code-challenge-nine.vercel.app/api/user/', {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }
@@ -26,7 +27,7 @@ function Users() {
         
         if(window.confirm('Are you sure you want to delete this user?')) {
             try {
-                await axios.delete(`/user/${id}`, {
+                await axios.delete(`https://code-challenge-nine.vercel.app/api/user/${id}`, {
                     headers: {
                         'Authorization': Cookies.get('refreshtoken')
                     }

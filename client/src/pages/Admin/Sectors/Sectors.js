@@ -7,10 +7,11 @@ import remove from '../../../assets/delete.svg'
 
 function Sectors() {
     const [Sector, setSector] = useState([])
+    axios.defaults.withCredentials = true
 
     const getSectors = async () => {
         try {
-            const res = await axios.get('/sector/', {
+            const res = await axios.get('https://code-challenge-nine.vercel.app/api/sector/', {
                 headers: {
                     'Authorization': Cookies.get('refreshtoken')
                 }
@@ -24,7 +25,7 @@ function Sectors() {
     const deleteSector = async (id) => {
         if(window.confirm('Are you sure you want to delete this sector?')) {
             try {
-                await axios.delete(`/sector/${id}`, {
+                await axios.delete(`https://code-challenge-nine.vercel.app/api/sector/${id}`, {
                     headers: {
                         'Authorization': Cookies.get('refreshtoken')
                     }
