@@ -6,11 +6,12 @@ function Login() {
     const [Name, setName] = useState('')
     const [Password, setPassword] = useState('')
     const [Error, setError] = useState('')
+    axios.defaults.withCredentials = true
 
     const submitHandler = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('/customer/login', {
+            const res = await axios.post('https://code-challenge-nine.vercel.app/api/customer/login', {
                 name: Name,
                 password: Password,
             })

@@ -5,11 +5,12 @@ function Register() {
     const [Name, setName] = useState('')
     const [Password, setPassword] = useState('')
     const [Error, setError] = useState('')
+    axios.defaults.withCredentials = true
 
     const submitHandler = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('/customer/register', {
+            const res = await axios.post('https://code-challenge-nine.vercel.app/api/customer/register', {
                 name: Name,
                 password: Password,
             })
