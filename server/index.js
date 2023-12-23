@@ -8,7 +8,7 @@ let port = process.env.PORT || 8080
 
 app.use(cors({
     origin: ['https://code-challenge-client-seven.vercel.app'],
-    methods: ['POST', 'GET'],
+    methods: ["POST", "PUT", "GET", "DELETE", "OPTIONS"],
     credentials: true
 }))
 
